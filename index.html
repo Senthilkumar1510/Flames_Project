@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Flames</title>
+<link href="Style.css" rel = "stylesheet">
+</head>
+<body>
+	<section class = "bodyElements-container">
+		<h1>RelationShip Finder</h1>
+ <div class = "form-container">
+ <form class = "details" autocomplete="off">
+ <input type = "text" class = "nameContainer" id = "Name1" placeholder = "Enter a Name" required>
+ <input type = "text" class = "nameContainer" id = "Name2" placeholder = "Enter a Name" required>
+ <button onclick="process()" class = "submit-btn" name = "submit-btn" >Find Relationship</button>
+ </form>
+ </div>
+ <p id="result"></p>
+ <div id="images"></div>
+	</section>
+	<script>
+	
+    function process() {
+    	
+      var name1 = document.getElementById("Name1").value;
+      var name2 = document.getElementById("Name2").value;
+      if(((name1==null)||name1=="")||((name2==null)||name2=="")){
+    	  alert("enter both values");
+    	  console.log("1");
+      }
+      else{
+    	  event.preventDefault();
+      console.log(name1);
+      console.log("name");
+      var string1 = name1.trim();
+      var string2 = name2.trim();
+      for (var i = 0; i < string1.length; i++) {
+        var s = string1.charAt(i);
+        var w = string2.indexOf(s);
+        if (w != -1) {
+          string2 = string2.slice(0, w) + string2.slice(w + 1);
+          string1 = string1.slice(0, i) + string1.slice(i + 1);
+          i--;
+        }
+      }
+      var g = string1.length + string2.length;
+      var fl = "FLAMES";
+      var answer = "";
+      var image="";
+      var friend = "F";
+      var lover = "L";
+      var affection = "A";
+      var marriage = "M";
+      var enemy = "E";
+      var sister = "S";
+      var s = 0;
+      var a = "";
+      while (true) {
+        for (var i = 0; i < g; i++) {
+          if (s > fl.length) {
+            s = 0;
+          }
+          if (s == fl.length) {
+            s = 0;
+          }
+          a = fl.charAt(s);
+          s++;
+        }
+        s--;
+        fl = fl.replace(a, "");
+        if (fl.length == 1) break;
+      }
+      switch (fl) {
+        case friend:
+          answer = "FRIEND";
+          image="<img src='images/friendship.png'>";
+          break;
+        case lover:
+          answer = "LOVE";
+          image="<img src='images/love.png'>"
+          break;
+        case affection:
+          answer = "AFFECTION";
+          image="<img src='images/affection.png'>"
+          break;
+        case marriage:
+          answer = "MARRIAGE";
+          image="<img src='images/marriage.png'>"
+          break;
+        case enemy:
+          answer = "ENEMY";
+          image="<img src='images/fight.png'>"
+          break;
+        case sister:
+          answer = "SISTER";
+          image="<img src='images/sister.png'>"
+
+          break;
+      }
+      let ok=document.getElementById("result");
+      ok.innerHTML = "The relationship between "+name1+" and "+name2+" will end in "+answer;
+      let ok1=document.getElementById("images");
+      ok1.innerHTML =image;   
+      }
+    }
+  </script>
+</body>
+</html>
