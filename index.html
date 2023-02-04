@@ -32,8 +32,8 @@
     	  event.preventDefault();
       console.log(name1);
       console.log("name");
-      var string1 = name1.trim();
-      var string2 = name2.trim();
+      var string1 = name1.split(" ").join("").trim().toLowerCase();
+      var string2 = name2.split(" ").join("").trim().toLowerCase();
       for (var i = 0; i < string1.length; i++) {
         var s = string1.charAt(i);
         var w = string2.indexOf(s);
