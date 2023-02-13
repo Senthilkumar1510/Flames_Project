@@ -24,22 +24,25 @@
     	
       var name1 = document.getElementById("Name1").value;
       var name2 = document.getElementById("Name2").value;
+      var letters = /^[A-Za-z]+$/;
+    
+    if((!letters.test(name1)) || (!letters.test(name2))) {
+      alert("inValid input. Only letters (a-z, A-Z) are allowed.");}
+      else{
       if(((name1==null)||name1=="")||((name2==null)||name2=="")){
     	  alert("enter both values");
-    	  console.log("1");
+    	 
       }
       else{
     	  event.preventDefault();
-      console.log(name1);
-      console.log("name");
-      var string1 = name1.split(" ").join("").trim().toLowerCase();
-      var string2 = name2.split(" ").join("").trim().toLowerCase();
-      for (var i = 0; i < string1.length; i++) {
+      var string1 = name1.trim();
+      var string2 = name2.trim();
+      for (var Start = 0; Start < string1.length; Start++) {
         var s = string1.charAt(i);
         var w = string2.indexOf(s);
         if (w != -1) {
           string2 = string2.slice(0, w) + string2.slice(w + 1);
-          string1 = string1.slice(0, i) + string1.slice(i + 1);
+          string1 = string1.slice(0, Start) + string1.slice(Start + 1);
           i--;
         }
       }
@@ -102,7 +105,7 @@
       let ok1=document.getElementById("images");
       ok1.innerHTML =image;   
       }
-    }
+    }}
   </script>
 </body>
 </html>
