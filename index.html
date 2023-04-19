@@ -22,8 +22,8 @@
 	
     function process() {
     	
-      var name1 = document.getElementById("Name1").value;
-      var name2 = document.getElementById("Name2").value;
+      var name1 = document.getElementById("Name1").value.trim();
+      var name2 = document.getElementById("Name2").value.trim();
       var letters = /^[A-Za-z]+$/;
     
     if((!letters.test(name1)) || (!letters.test(name2))) {
